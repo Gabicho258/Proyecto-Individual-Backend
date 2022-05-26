@@ -1,9 +1,20 @@
 import express from "express";
 import mongoose from "mongoose";
-import "dotenv/config";
 import cors from "cors";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import { userRouter, hotelRouter, commentRouter } from "./api/routes/index.js";
+
+// config enviroment
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({
+  path: path.resolve(__dirname, `${process.env.NODE_ENV}.env`),
+});
 
 // connecting to mongo database
 

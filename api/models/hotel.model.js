@@ -12,12 +12,12 @@ const hotelShema = {
   whatsapp: Number,
   whatsapp_link: String,
   //services
-  wifi: Boolean,
-  pool: Boolean,
-  restaurant: Boolean,
-  gym: Boolean,
-  parking: Boolean,
-  tv: Boolean,
+  wifi: { type: Boolean, default: false },
+  pool: { type: Boolean, default: false },
+  restaurant: { type: Boolean, default: false },
+  gym: { type: Boolean, default: false },
+  parking: { type: Boolean, default: false },
+  tv: { type: Boolean, default: false },
 };
 
 const Hotel = mongoose.model("Hotel", hotelShema, "hotels");

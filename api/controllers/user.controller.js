@@ -89,6 +89,9 @@ export const deleteUser = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password, role } = req.body;
   const userDB = await User.findOne({ email, role });
+  if (!(email && password)) {
+    return res.status(400).json();
+  }
   if (!userDB) {
     res.status(403).send();
     return;
@@ -109,12 +112,12 @@ export const login = async (req, res) => {
               ...userDB._doc,
             });
           } else {
-            res.status(403).send();
+            res.status(401).send();
           }
         }
       );
     } else {
-      res.status(403).send();
+      res.status(401).send();
     }
   });
 };
